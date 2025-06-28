@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional UI/UX Design Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --gray: #adb5bd;
+            --light-gray: #e9ecef;
+            --border-radius: 16px;
+            --shadow: 0 12px 30px rgba(0,0,0,0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --gradient-primary: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-accent: linear-gradient(135deg, #f72585, #b5179e);
+            --gradient-success: linear-gradient(135deg, #4cc9f0, #4895ef);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -150px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            padding: 16px 32px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(67, 97, 238, 0.25);
+            color: white;
+        }
+
+        .tab-btn:hover::before {
+            opacity: 1;
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 20px 30px rgba(67, 97, 238, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .tab-btn i {
+            font-size: 1.4rem;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Email Template Styles */
+        .email-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .email-logo {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .email-container {
+            padding: 50px 30px;
+        }
+
+        .email-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .email-content h2 {
+            margin-bottom: 25px;
+            color: var(--secondary);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .email-content p {
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin: 15px 0;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.5);
+        }
+
+        .email-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            gap: 30px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 280px;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            z-index: 2;
+        }
+
+        .feature i {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .email-footer {
+            background: var(--light-gray);
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Restaurant Menu Styles */
+        .restaurant-header {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .restaurant-header::before {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .menu-container {
+            padding: 50px 30px;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-btn {
+            padding: 14px 28px;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .category-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.2);
+            border-color: transparent;
+            color: white;
+        }
+
+        .category-btn:hover::before {
+            opacity: 1;
+        }
+
+        .category-btn.active {
+            background: var(--gradient-accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.3);
+            border-color: transparent;
+            transform: translateY(-5px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            transform: perspective(1000px) rotateX(0) rotateY(0);
+            will-change: transform;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px) perspective(1000px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .menu-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .menu-details {
+            padding: 25px;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .menu-title h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .menu-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.6rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .menu-desc {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background: var(--light-gray);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--dark);
+            margin-right: 8px;
+        }
+
+        /* E-commerce Styles */
+        .ecom-header {
+            background: var(--gradient-success);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecom-header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .ecom-container {
+            padding: 50px 30px;
+        }
+
+        .search-bar {
+            display: flex;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            height: 70px;
+            box-shadow: var(--shadow);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0 30px;
+            border: none;
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 0 40px;
+            background: var(--gradient-success);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: var(--gradient-primary);
+        }
+
+        .ecom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateZ(1deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tag-new {
+            background: var(--gradient-success);
+        }
+
+        .tag-sale {
+            background: var(--gradient-accent);
+        }
+
+        .product-details {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .product-price {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            background: var(--gradient-success);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .product-rating {
+            color: var(--warning);
+            margin-bottom: 20px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .add-to-cart {
+            flex: 1;
+            background: var(--gradient-success);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(76, 201, 240, 0.4);
+        }
+
+        .add-to-cart:hover {
+            background: var(--gradient-primary);
+            transform: scale(1.05);
+        }
+
+        .wishlist {
+            width: 60px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .wishlist:hover {
+            background: #ffd1d9;
+            color: var(--danger);
+            transform: scale(1.1);
+        }
+
+        .demo-section {
+            padding: 60px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .demo-title {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 45px;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin: 15px 0;
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
+            font-size: 1.2rem;
+            gap: 15px;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(67, 97, 238, 0.5);
+            background: var(--gradient-accent);
+        }
+
+        .demo-btn:hover i {
+            transform: translateX(8px);
+        }
+
+        .demo-btn i {
+            transition: var(--transition);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            
+            .menu-grid,
+            .ecom-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .tab-btn {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            
+            .email-header,
+            .restaurant-header,
+            .ecom-header {
+                padding: 40px 20px;
+            }
+            
+            .email-container,
+            .menu-container,
+            .ecom-container {
+                padding: 40px 20px;
+            }
+            
+            .feature {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .search-bar {
+                height: 60px;
+            }
+            
+            .search-bar input {
+                padding: 0 20px;
+            }
+            
+            .search-bar button {
+                padding: 0 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Professional UI/UX Design Showcase</h1>
+            <p>Modern, responsive designs with dynamic interactions and high-quality graphics</p>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="email">
+                    <i class="fas fa-envelope"></i> Email Template
+                </button>
+                <button class="tab-btn" data-tab="menu">
+                    <i class="fas fa-utensils"></i> Restaurant Menu
+                </button>
+                <button class="tab-btn" data-tab="ecom">
+                    <i class="fas fa-shopping-cart"></i> E-commerce
+                </button>
+            </div>
+        </header>
+        
+        <!-- Email Template Section -->
+        <div id="email" class="tab-content active">
+            <div class="email-header">
+                <div class="email-logo">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h2>Beautiful Email Templates</h2>
+                <p>Designed to engage your audience and drive conversions</p>
+            </div>
+            
+            <div class="email-container">
+                <div class="email-content">
+                    <h2>Welcome to Our Newsletter!</h2>
+                    <p>Thank you for subscribing to our newsletter. You'll receive exclusive content, special offers, and the latest updates right in your inbox. Stay tuned for amazing content crafted just for you!</p>
+                    <a href="#" class="btn">View Latest Offers <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="email-features">
+                    <div class="feature">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Visually Appealing</h3>
+                        <p>Eye-catching designs with balanced colors, typography, and imagery that captures attention</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Fully Responsive</h3>
+                        <p>Perfectly displayed on all devices from desktop to mobile with adaptive layouts</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Easy to Customize</h3>
+                        <p>Simple to edit and personalize for your brand with modular components</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="email-footer">
+                <p>© 2023 Brand Name. All rights reserved. | <a href="#">Unsubscribe</a> | <a href="#">Privacy Policy</a></p>
+            </div>
+            
+            <div class="demo-section">
+                <h3 class="demo-title">Ready to see it in action?</h3>
+                <a href="#" class="demo-btn">View Email Demo <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Restaurant Menu Section -->
+        <div id="menu" class="tab-content">
+            <div class="restaurant-header">
+                <div class="email-logo">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h2>Delicious Restaurant Menu</h2>
+                <p>Crafted to showcase your dishes and enhance customer experience</p>
+            </div>
+            
+            <div class="menu-container">
+                <div class="menu-categories">
+                    <button class="category-btn active">All</button>
+                    <button class="category-btn">Appetizers</button>
+                    <button class="category-btn">Main Course</button>
+                    <button class="category-btn">Desserts</button>
+                    <button class="category-btn">Drinks</button>
+                    <button class="category-btn">Specials</button>
+                </div>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="menu-details">
+                            <div class="menu-title">
+                                <h3>Margherita Pizza</h3>
+                                <span class="menu-price">$14.99</span>
+                            </div>
+                            <p class="menu-desc">Classic pizza with San Marzano tomato sauce, fresh mozzarella, and basil</p>
+                            <div>
+                                <span class="menu-tag">Vegetarian</span>
+                                <span class="menu-tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e7a7a7bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="menu-details">
+                            <div class="menu-title">
+                                <h3>Grilled Salmon</h3>
+                                <span class="menu-price">$22.99</span>
+                            </div>
+                            <p class="menu-desc">Fresh salmon with lemon butter sauce, asparagus, and roasted potatoes</p>
+                            <div>
+                                <span class="menu-tag">Gluten Free</span>
+                                <span class="menu-tag">Chef's Choice</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="menu-details">
+                            <div class="menu-title">
+                                <h3>Gourmet Burger</h3>
+                                <span class="menu-price">$16.99</span>
+                            </div>
+                            <p class="menu-desc">Angus beef patty with special sauce, cheddar, and crispy fries</p>
+                            <div>
+                                <span class="menu-tag">Popular</span>
+                                <span class="menu-tag">Comfort Food</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="menu-details">
+                            <div class="menu-title">
+                                <h3>Tiramisu</h3>
+                                <span class="menu-price">$8.99</span>
+                            </div>
+                            <p class="menu-desc">Classic Italian dessert with coffee-soaked ladyfingers and mascarpone</p>
+                            <div>
+                                <span class="menu-tag">Dessert</span>
+                                <span class="menu-tag">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-section">
+                <h3 class="demo-title">Experience the full menu</h3>
+                <a href="#" class="demo-btn">View Menu Demo <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- E-commerce Section -->
+        <div id="ecom" class="tab-content">
+            <div class="ecom-header">
+                <div class="email-logo">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h2>Modern E-commerce Experience</h2>
+                <p>Designed to showcase products and streamline shopping</p>
+            </div>
+            
+            <div class="ecom-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                    <button><i class="fas fa-search"></i> SEARCH</button>
+                </div>
+                
+                <div class="ecom-grid">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                            <span class="product-tag tag-new">NEW</span>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Wireless Headphones</h3>
+                            <div class="product-price">$129.99</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(128)</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">Add to Cart</button>
+                                <button class="wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                            <span class="product-tag tag-sale">SALE</span>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Smart Watch</h3>
+                            <div class="product-price">$199.99</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(96)</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">Add to Cart</button>
+                                <button class="wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Bluetooth Speaker</h3>
+                            <div class="product-price">$89.99</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(247)</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">Add to Cart</button>
+                                <button class="wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                            <span class="product-tag tag-new">NEW</span>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Wireless Keyboard</h3>
+                            <div class="product-price">$59.99</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span>(72)</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">Add to Cart</button>
+                                <button class="wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-section">
+                <h3 class="demo-title">Explore our e-commerce platform</h3>
+                <a href="#" class="demo-btn">View E-commerce Demo <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Menu category switching
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // In a real implementation, this would filter menu items
+                });
+            });
+            
+            // Add to cart/wishlist animations
+            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            const wishlistBtns = document.querySelectorAll('.wishlist');
+            
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = 'Added! <i class="fas fa-check"></i>';
+                    this.style.background = 'var(--gradient-accent)';
+                    
+                    // Create cart animation
+                    const cartIcon = document.createElement('div');
+                    cartIcon.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+                    cartIcon.style.position = 'fixed';
+                    cartIcon.style.left = `${this.getBoundingClientRect().left + 20}px`;
+                    cartIcon.style.top = `${this.getBoundingClientRect().top}px`;
+                    cartIcon.style.fontSize = '24px';
+                    cartIcon.style.color = 'var(--accent)';
+                    cartIcon.style.zIndex = '1000';
+                    cartIcon.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    document.body.appendChild(cartIcon);
+                    
+                    // Animate to cart position
+                    setTimeout(() => {
+                        cartIcon.style.left = 'calc(100% - 80px)';
+                        cartIcon.style.top = '20px';
+                        cartIcon.style.transform = 'scale(1.5)';
+                        cartIcon.style.opacity = '0';
+                    }, 10);
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = '';
+                        cartIcon.remove();
+                    }, 2000);
+                });
+            });
+            
+            wishlistBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.replace('far', 'fas');
+                        icon.style.color = 'var(--danger)';
+                        
+                        // Create heart animation
+                        const heart = document.createElement('div');
+                        heart.innerHTML = '<i class="fas fa-heart"></i>';
+                        heart.style.position = 'absolute';
+                        heart.style.left = '50%';
+                        heart.style.top = '50%';
+                        heart.style.transform = 'translate(-50%, -50%)';
+                        heart.style.fontSize = '0px';
+                        heart.style.color = 'var(--danger)';
+                        heart.style.opacity = '1';
+                        heart.style.transition = 'all 0.8s ease-out';
+                        this.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            heart.style.fontSize = '40px';
+                            heart.style.opacity = '0';
+                        }, 10);
+                        
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 800);
+                    } else {
+                        icon.classList.replace('fas', 'far');
+                        icon.style.color = '';
+                    }
+                });
+            });
+            
+            // Card hover effects with 3D tilt
+            const cards = document.querySelectorAll('.menu-item, .product-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = (x - centerX) / 25;
+                    const rotateX = (centerY - y) / 25;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
